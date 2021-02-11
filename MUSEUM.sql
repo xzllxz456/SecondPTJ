@@ -1,0 +1,58 @@
+CREATE TABLE MU_EDU
+(
+    EDU_IDX         NUMBER CONSTRAINT EDU_IDX_PK PRIMARY KEY, 
+     EDU_NAME        VARCHAR2(30)     NOT NULL UNIQUE,
+     EDU_TITLE      VARCHAR2(30)    NOT NULL,
+    EDU_CONTENTS    CLOB, 
+      EDU_IMGNAME     VARCHAR2(100)    NOT NULL, 
+    EDU_IMGLOCAL    VARCHAR2(50)     NOT NULL, 
+  
+    EDU_STATUS      VARCHAR2(20)     NOT NULL
+   
+);
+
+CREATE SEQUENCE MU_EDU_SEQ NOCACHE; 
+
+INSERT INTO MU_EDU(
+EDU_IDX, EDU_NAME, EDU_TITLE, EDU_CONTENTS,EDU_IMGNAME, EDU_IMGLOCAL, EDU_STATUS
+)
+VALUES(MU_EDU_SEQ.NEXTVAL ,'전문인', 'pro','교육내용침팬지가르치기', 'edu01.png','admin/image/edu01.png', 'ED01')
+;
+
+INSERT INTO MU_EDU(
+EDU_IDX, EDU_NAME, EDU_TITLE, EDU_CONTENTS,EDU_IMGNAME, EDU_IMGLOCAL, EDU_STATUS
+)
+VALUES(MU_EDU_SEQ.NEXTVAL ,'성인', 'Jesus','교육내용고릴라가르치기', 'edu02.png','admin/image/edu02.png', 'ED01')
+;
+
+INSERT INTO MU_EDU(
+EDU_IDX, EDU_NAME, EDU_TITLE, EDU_CONTENTS,EDU_IMGNAME, EDU_IMGLOCAL, EDU_STATUS
+)
+VALUES(MU_EDU_SEQ.NEXTVAL ,'청소년-교사', 'child','교육내용나무늘보가르치기', 'edu03.png','admin/image/edu03.png', 'ED01')
+;
+commit;
+
+
+--------------------------------------------------------------------------
+--프라이머리
+CREATE TABLE EDU_DETAIL
+(
+    EDU_DETIDX           NUMBER           NOT NULL, 
+    EDU_TARGET           VARCHAR2(50)     , 
+    EDU_IMPT_CONTENTS    VARCHAR2(500)    , 
+    EDU_TERM             VARCHAR2(300)    , 
+    ADDR                 VARCHAR2(300)    , 
+    EDU_IDX              NUMBER           , 
+    EDU_DETAILNAME       VARCHAR2(300)    , 
+    DDU_PRICE            VARCHAR2(300)    , 
+    EDU_ADDRTARGET       VARCHAR2(300)    NOT NULL, 
+    EDU_PERIOD_START     DATE             NOT NULL, 
+    EDU_PERIOD_END       DATE             NOT NULL, 
+    CONSTRAINT EDU_DETAIL_PK PRIMARY KEY (EDU_DETIDX)
+);
+
+CREATE SEQUENCE EDU_DETAIL_SEQ NOCACHE; 
+
+ALTER TABLE EDU_DETAIL
+    ADD CONSTRAINT FK_EDU_DETAIL_EDU_IDX_MU_EDU_E FOREIGN KEY (EDU_IDX)
+        REFERENCES MU_EDU (EDU_IDX);
