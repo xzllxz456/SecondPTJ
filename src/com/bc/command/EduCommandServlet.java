@@ -9,7 +9,4 @@ import javax.servlet.http.HttpServletResponse;
 public interface EduCommandServlet {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException;
-	/*
-	 * 서블릿 매개변수 받는 인터페이스
-	 */
 }

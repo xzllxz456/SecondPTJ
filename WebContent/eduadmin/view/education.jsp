@@ -7,8 +7,11 @@
 <meta charset="UTF-8">
 <title>교육 > 미술관교육소개</title>
 <!-- normalize.css -->
+<script src="https://kit.fontawesome.com/55068700bb.js" crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+<link rel= "stylesheet" type="text/css" href="eduadmin/include/footer.css">
+
 <style>
 html,
 body {
@@ -93,6 +96,21 @@ body {
 	background-color: gray;
 }
 </style>
+<script>
+	function insert_btn(frm) {
+		//?utilparam=insert
+		frm.action = "adminEduBtn"; //list 요청
+		frm.submit();
+	}
+	function delete_btn(frm) {
+		frm.action = "adminEduBtn"; //list 요청
+		frm.submit();
+	}
+	function update_btn(frm) {
+		frm.action = "adminEduBtn"; //list 요청
+		frm.submit();
+	}
+</script>
 </head>
 <body>
 	<h3 class="sub_title">
@@ -118,17 +136,33 @@ body {
 				<form action="education" method="get">
 					<ul>
 					<c:forEach var="eduVo" items="${edulist }">
+	 				<c:if test="${eduVo.edu_status eq 'ED01'}">
 						<li><span>${eduVo.edu_name}<br />교육</span><br> 
 						<a href="education?param=${eduVo.edu_title}">
 							<img src="${eduVo.edu_imglocal}">
 						</a>
 						</li>
+					</c:if> 
 					</c:forEach>
 					</ul>
 				</form>
 			</div>
 		</section>
 	</div>
-
+	<div>
+		<form method="post">
+			<input type="hidden" name="utilparam" value="insert">
+			<input type="button" value="추가" onclick="insert_btn(this.form)">
+		</form>
+		<form method="post">
+			<input type="hidden" name="utilparam" value="delete">
+			<input type="button" value="삭제" onclick="delete_btn(this.form)">
+		</form>
+		<form method="post">
+			<input type="hidden" name="utilparam" value="update">
+			<input type="button" value="수정" onclick="update_btn(this.form)">
+		</form>
+	</div>	
+<%@ include file="../include/footer.jspf" %>
 </body>
 </html>

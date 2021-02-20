@@ -19,15 +19,13 @@ public class EduInfo extends HttpServlet {
 		String param = request.getParameter("param");
 		EduCommandServlet Csl = null;
 		
-		if("edumain".equals(param)) {
+		if("edumain".equals(param) || param == null) {
 			Csl = new EduCommandServletImpl();
 		} else {
 			Csl = new ProCommandImpl();
 		}	
-		
 		String path = Csl.execute(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eddoc">
+	<select id="joineduidx" resultType="com.bc.model.vo.AdminDocJoinOptionVO">
+		SELECT E.EDU_IDX, E.EDU_NAME, D.EDU_DETIDX, D.EDU_IMPT_CONTENTS
+		FROM MU_EDU E, EDU_DETAIL D
+		WHERE E.EDU_IDX = D.EDU_IDX
+	</select>
+	
+	<select id="docinsert" parameterType="com.bc.model.vo.LearnDocumentsVO">
+		INSERT INTO MU_LEARN_DOC(
+			DOC_IDX,
+			DOC_TEXT,
+			DOC_FILENAME,
+			DOC_FILELOCAL,
+			EDU_DETIDX,
+			EDU_IDX,
+			DOC_STATUS
+		)
+		
+		VALUES(MU_LDOC_SEQ.NEXTVAL, #{doc_text}, #{doc_filename}, #{doc_filelocal},
+			#{edu_detidx}, #{edu_idx}, #{doc_status}
+		)
+	</select>
+</mapper>

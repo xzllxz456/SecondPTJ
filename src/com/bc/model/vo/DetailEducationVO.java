@@ -26,5 +26,7 @@ public class DetailEducationVO {
 	private String edu_period_end;
 	private String edu_detailtime;
 	private String edu_phone;
+	private String edu_leanimgname;
+	private String edu_leanimglocal;
 	private String edu_detailstatus;
 }

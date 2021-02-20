@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.bc.model.vo.EducationVO;
 import com.bc.resource.DBService;
 
-public class EduDAOImpl implements EduInterface{
+public class EduDAOImpl implements EduDAOInterface{
 
 	@Override
 	public List<EducationVO> exam() throws Exception {
@@ -22,6 +22,13 @@ public class EduDAOImpl implements EduInterface{
 	public EducationVO detailMenu(String edu_title) throws Exception {
 		SqlSession session = DBService.getFactory().openSession(); 
 		EducationVO edVo = session.selectOne("edu.eduvo", edu_title);
+		session.close();
+		return edVo;
+	}
+	
+	public EducationVO detailSelectIdx(String idx) throws Exception {
+		SqlSession session = DBService.getFactory().openSession(); 
+		EducationVO edVo = session.selectOne("edu.eduvoselect", idx);
 		session.close();
 		return edVo;
 	}
