@@ -154,6 +154,82 @@ FROM MU_EDU E, EDU_DETAIL D
 WHERE E.EDU_IDX = D.EDU_IDX;
 commit;
 
-SELECT E.EDU_IDX, E.EDU_NAME, D.EDU_DETIDX, D.EDU_IMPT_CONTENTS
-FROM MU_EDU E, EDU_DETAIL D
-WHERE E.EDU_IDX = D.EDU_IDX;
+SELECT *
+FROM MU_EDU E, EDU_DETAIL L, MU_LEARN_DOC D
+WHERE E.EDU_IDX = L.EDU_IDX and D.EDU_IDX = E.EDU_IDX;
+
+SELECT DOC_TEXT,d.*
+FROM MU_LEARN_DOC D, MU_EDU E, EDU_DETAIL L
+WHERE D.EDU_IDX = E.EDU_IDX and D.EDU_IDX = L.EDU_IDX;
+
+SELECT 
+    D.doc_idx,
+	D.doc_text,
+	D.doc_filename,
+	D.doc_filelocal,
+	D.doc_status,
+	L.edu_period_start,
+	L.edu_period_end,
+	L.edu_impt_contents,
+	D.edu_detidx,
+	D.edu_idx,
+	E.edu_name
+FROM MU_EDU E, EDU_DETAIL L, MU_LEARN_DOC D
+WHERE E.EDU_IDX = L.EDU_IDX and D.EDU_IDX = E.EDU_IDX
+;
+
+SELECT 
+    D.doc_idx,
+	D.doc_text,
+	D.doc_filename,
+	D.doc_filelocal,
+	D.doc_status,
+	L.edu_period_start,
+	L.edu_period_end,
+	L.edu_impt_contents,
+	D.edu_detidx,
+	D.edu_idx,
+	E.edu_name
+FROM MU_EDU E, EDU_DETAIL L, MU_LEARN_DOC D
+WHERE D.edu_detidx = L.edu_detidx and D.EDU_IDX = E.EDU_IDX
+;
+  SELECT 		*
+		                FROM 		MU_EDU
+						WHERE		(EDU_IDX  LIKE '%' || null || '%')
+		                ORDER BY 	EDU_IDX DESC;
+		SELECT 	NN.*
+		FROM    (
+		        SELECT ROWNUM RN, N.*
+		        FROM    (
+		                SELECT 		*
+		                FROM 		MU_EDU
+						WHERE		(EDU_IDX  LIKE '%' || null || '%')
+		                ORDER BY 	EDU_IDX DESC
+		                ) N
+        		) NN
+		WHERE RN BETWEEN 1 AND 5
+;
+SELECT 	NN.*
+FROM    (
+SELECT ROWNUM RN, N.*
+	FROM (SELECT 
+	    D.doc_idx,
+		D.doc_text,
+		D.doc_filename,
+		D.doc_filelocal,
+		D.doc_status,
+		L.edu_period_start,
+		L.edu_period_end,
+		L.edu_impt_contents,
+		D.edu_detidx,
+		D.edu_idx,
+		E.edu_name
+	FROM MU_EDU E, EDU_DETAIL L, MU_LEARN_DOC D
+	WHERE D.edu_detidx = L.edu_detidx and D.EDU_IDX = E.EDU_IDX and d.doc_status = 'LD01'
+    ORDER BY D.DOC_IDX DESC
+    )N
+    ;	
+    
+		SELECT 	COUNT(DOC_IDX)
+		FROM 	MU_LEARN_DOC
+		WHERE 	DOC_STATUS = 'LD01';

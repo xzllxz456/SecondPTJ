@@ -23,6 +23,6 @@ public class AdminEducationUpdate implements EduCommandServlet {
 			e.printStackTrace();
 			return null;
 		}
-		return "eduadmin/view/adminupdate.jsp";
+		return "eduadmin/adminupdate.jsp";
 	}
 }

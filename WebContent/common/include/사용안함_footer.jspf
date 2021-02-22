@@ -1,0 +1,26 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<footer class="footer">
+	<div class="leftBar">
+		<h1><i class="fas fa-landmark">&nbsp;</i>CALLBACK MUSEUM</h1>
+	</div>
+	<div class="rightBar">
+		<h3>[ CALLBACK MUSEUM ]</h3>
+		<p>	대표자 콜백팀 | 사업자등록번호 969-59-19000 Copyright (c)2021 National
+			Museum of CallBack and Contemporary Art, Korea All rights reserved.<br>
+			대표전화 02-0101-9900 전시관련 02-0202-9900 기타문의 02-0303-9900 메일문의 callback_museum@bit.com</p>
+		<ul class="bannerIcon">
+			<li><i class="fab fa-facebook-square"></i></li>
+			<li><i class="fab fa-instagram-square"></i></li>
+			<li><i class="fab fa-line"></i></li>
+			<li><i class="fab fa-youtube-square"></i></li>
+			<li><i class="fab fa-goodreads"></i></li>
+		</ul>
+		<ul class="bottomlist">
+			<li><a href="#">이용약관&nbsp;&nbsp;</a></li>
+			<li><a href="#">개인정보처리방침&nbsp;&nbsp;</a></li>
+			<li><a href="#">저작권정책&nbsp;&nbsp;</a></li>
+			<li><a href="#">국민신문고&nbsp;&nbsp;</a></li>
+			<li><a href="#">정보공개&nbsp;&nbsp;</a></li>
+		</ul>
+	</div>
+</footer>

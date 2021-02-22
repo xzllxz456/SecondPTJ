@@ -28,6 +28,6 @@ public class LearnDocInsertCommandImpl implements LearnDocCommandServlet {
 			e.printStackTrace();
 		}
 		
-		return "eduadmin/view/adminlearnedudocumentinsert.jsp";
+		return "eduadmin/adminlearnedudocumentinsert.jsp";
 	}
 }

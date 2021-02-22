@@ -1,0 +1,9 @@
+.body-content {
+	display: flex;
+	justify-content: center;
+	margin: 66px 0 200px;
+}
+.main-img {
+	width: 1000px;
+	height: auto;
+}

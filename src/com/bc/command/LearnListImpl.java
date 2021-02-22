@@ -19,6 +19,6 @@ public class LearnListImpl implements EduCommandServlet{
 		// 교육진행중 리스트 불러오기
 		List<DetailEducationVO> list = new EduDetImpl().detailEdu();
 		request.setAttribute("leanlist", list);
-		return "eduadmin/view/learnList.jsp";
+		return "eduadmin/learnList.jsp";
 	}
 }

@@ -24,6 +24,6 @@ public class AdminLearnUpdate implements LearnCommandServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "eduadmin/view/adminlearnupdate.jsp";
+		return "eduadmin/adminlearnupdate.jsp";
 	}
 }

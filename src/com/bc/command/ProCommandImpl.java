@@ -18,7 +18,7 @@ public class ProCommandImpl implements EduCommandServlet{
 			throws ServletException, IOException {
 		subTitle(request, response);
 		listUtil(request, response);
-		return "eduadmin/view/proeducation.jsp";
+		return "eduadmin/proeducation.jsp";
 	}
 	
 	private void subTitle(HttpServletRequest request, HttpServletResponse response) {

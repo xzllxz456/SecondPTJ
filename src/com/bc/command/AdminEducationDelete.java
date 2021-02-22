@@ -23,6 +23,6 @@ public class AdminEducationDelete implements EduCommandServlet {
 			e.printStackTrace();
 			return null;
 		}
-		return "eduadmin/view/admindelete.jsp";
+		return "eduadmin/admindelete.jsp";
 	}
 }

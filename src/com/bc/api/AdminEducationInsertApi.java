@@ -28,6 +28,7 @@ public class AdminEducationInsertApi extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
 		int res = 0;
 		String  directory = request.getSession().getServletContext().getRealPath(PATH);
+		System.out.println(directory);
 		// 파일 처리 세팅
 		MultipartRequest mr = new MultipartRequest(request, directory, (SIZE),
 				"UTF-8", new DefaultFileRenamePolicy());
@@ -37,6 +38,8 @@ public class AdminEducationInsertApi extends HttpServlet {
 		eduVo.setEdu_title(mr.getParameter("edutitle"));
 		eduVo.setEdu_contents(mr.getParameter("educontents"));
 		eduVo.setEdu_status(mr.getParameter("ED01"));
+		System.out.println(eduVo);
+		System.out.println(mr.getOriginalFileName("edufile"));
 		// 파일 있는지 없는지 체크
 		if(mr.getFile("edufile") != null) {
 			eduVo.setEdu_imgname(mr.getOriginalFileName("edufile"));

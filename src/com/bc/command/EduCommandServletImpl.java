@@ -24,7 +24,7 @@ public class EduCommandServletImpl implements EduCommandServlet{
 			e.printStackTrace();
 			return null;
 		}
-		return "eduadmin/view/education.jsp";
+		return "eduadmin/education.jsp";
 	}
 	
 }

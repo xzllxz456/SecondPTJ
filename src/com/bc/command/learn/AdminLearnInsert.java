@@ -19,6 +19,6 @@ public class AdminLearnInsert implements LearnCommandServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "eduadmin/view/adminlearninsert.jsp";
+		return "eduadmin/adminlearninsert.jsp";
 	}
 }

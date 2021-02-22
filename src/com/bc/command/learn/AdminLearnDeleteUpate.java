@@ -27,7 +27,7 @@ public class AdminLearnDeleteUpate implements LearnCommandServlet {
 			e.printStackTrace();
 			return null;
 		}
-		return "eduadmin/view/adminlearndeleteupdate.jsp";
+		return "eduadmin/adminlearndeleteupdate.jsp";
 	}
 	
 	private void title(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

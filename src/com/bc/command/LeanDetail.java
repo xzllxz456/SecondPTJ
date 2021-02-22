@@ -22,6 +22,6 @@ public class LeanDetail implements EduCommandServlet{
 			
 			e.printStackTrace();
 		}
-		return "eduadmin/view/leaneducation.jsp";
+		return "eduadmin/leaneducation.jsp";
 	}
 }

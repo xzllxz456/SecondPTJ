@@ -11,7 +11,7 @@ public class AdminEducationInsert implements EduCommandServlet{
 	// insert page command
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		return "eduadmin/view/admininsert.jsp";
+		return "eduadmin/admininsert.jsp";
 	}
 	
 }
