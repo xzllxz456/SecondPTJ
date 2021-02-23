@@ -102,9 +102,12 @@ body {
 
 .edu-li-span{
 	position: absolute;
-    top: -43px;
-    left: 14px;
+	top: -25px;
+    left: 44px;
 }
+
+.edu-li-img{
+padding: 30px;}
 </style>
 <script>
 	function insert_btn(frm) {
@@ -154,7 +157,7 @@ body {
 	 				<c:if test="${eduVo.edu_status eq 'ED01'}">
 						<li class="edu_list"><span class="edu-li-span">${eduVo.edu_name}<br />교육</span><br> 
 						<a href="education?param=${eduVo.edu_title}">
-							<img src="${eduVo.edu_imglocal}" style="width: 500px; height: 300px;">
+							<img class="edu-li-img" src="${eduVo.edu_imglocal}" style="width: 500px; height: 300px;">
 						</a>
 						</li>
 					</c:if> 

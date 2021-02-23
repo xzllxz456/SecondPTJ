@@ -19,12 +19,15 @@ public class EduInfo extends HttpServlet {
 		String param = request.getParameter("param");
 		EduCommandServlet Csl = null;
 		
+		String path = "";
 		if("edumain".equals(param) || param == null) {
 			Csl = new EduCommandServletImpl();
 		} else {
-			Csl = new ProCommandImpl();
-		}	
-		String path = Csl.execute(request, response);
+			path = new ProCommandImpl().listpag(request, response);
+		}
+		if("".equals(path)) {
+			path = Csl.execute(request, response);
+		}
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 

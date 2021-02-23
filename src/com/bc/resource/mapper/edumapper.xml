@@ -4,17 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu">
 	<select id="allList" resultType="eduvo">
-		SELECT * FROM MU_EDU
+		SELECT * FROM MU_EDU WHERE EDU_STATUS = 'ED01'
 	</select>
 	
 	<select id="eduvo" resultType="eduvo" parameterType="string">
 		SELECT * FROM MU_EDU
-		WHERE EDU_TITLE = #{edu_title}
+		WHERE EDU_TITLE = #{edu_title} AND EDU_STATUS = 'ED01'
 	</select>
 	
 	<select id="eduvoselect" resultType="eduvo" parameterType="string">
 		SELECT * FROM MU_EDU
-		WHERE EDU_IDX = #{edu_idx}
+		WHERE EDU_IDX = #{edu_idx} AND EDU_STATUS = 'ED01'
 	</select>
 	
 	<insert id="eduinsert" parameterType="com.bc.model.vo.EducationVO">

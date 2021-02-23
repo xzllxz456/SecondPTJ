@@ -9,6 +9,27 @@
 <meta charset="UTF-8">
 <title>교육자료 페이지</title>
 <style>
+.paging {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.paging>li {
+    border: 1px solid #606060;
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    line-height: 3em;
+    margin-right: 0.25em;
+}
+.paging>li:first-child, .paging>li:nth-child(2), 
+.paging>li:nth-last-child(2), .paging>li:last-child 
+{
+    border: none;
+    width: 2.2em;
+    font-size: 1.2em;
+    line-height: 2.6em;
+}
 .paging li i {
     color: #808080;
 }
@@ -29,11 +50,6 @@
 }
 .paging .disable {
     display: none;
-}
-	span{
-
-     display: block;
-
 }
 </style>
 </head>

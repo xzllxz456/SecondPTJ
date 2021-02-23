@@ -20,7 +20,7 @@ public class DowloadControl extends HttpServlet {
 //		String direc = this.getServletContext().getRealPath("eduadmin/file/");// 업로드된 임시파일 경로 
 		String direc = "D:/JSP/MuseumPTJ/WebContent/eduadmin/file/"; // 실제 파일 경로
 		File file = new File(direc + "/" + fileName);
-		
+		System.out.println(file.toString());
 		String mimeType = getServletContext().getMimeType(file.toString());
 		if(mimeType == null) {
 			response.setContentType("application/octet-stream");

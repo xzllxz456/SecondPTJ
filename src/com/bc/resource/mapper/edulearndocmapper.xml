@@ -6,7 +6,7 @@
 	<select id="joineduidx" resultType="com.bc.model.vo.AdminDocJoinOptionVO">
 		SELECT E.EDU_IDX, E.EDU_NAME, D.EDU_DETIDX, D.EDU_IMPT_CONTENTS
 		FROM MU_EDU E, EDU_DETAIL D
-		WHERE E.EDU_IDX = D.EDU_IDX
+		WHERE E.EDU_IDX = D.EDU_IDX AND DOC_STATUS = 'LD01'
 	</select>
 	
 	<insert id="docinsert" parameterType="com.bc.model.vo.LearnDocumentsVO">
@@ -85,7 +85,7 @@ SELECT ROWNUM RN, N.*
 		D.edu_idx,
 		E.edu_name
 	FROM MU_EDU E, EDU_DETAIL L, MU_LEARN_DOC D
-	WHERE D.edu_detidx = L.edu_detidx and D.EDU_IDX = E.EDU_IDX	
+	WHERE D.edu_detidx = L.edu_detidx and D.EDU_IDX = E.EDU_IDX	AND D.DOC_STATUS = 'LD01'
 </select>
 
 <select id="totalrecord" resultType="int">
@@ -109,6 +109,7 @@ SELECT ROWNUM RN, N.*
 		E.edu_name
 	FROM MU_EDU E, EDU_DETAIL L, MU_LEARN_DOC D
 	WHERE D.edu_detidx = L.edu_detidx and D.EDU_IDX = E.EDU_IDX and DOC_IDX = #{idx}
+			AND DOC_STATUS = 'LD01'
 	</select>
 	
 	

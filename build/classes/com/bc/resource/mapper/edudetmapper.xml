@@ -3,18 +3,39 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edudet">
+	
+	<select id="totalRecord" resultType="int">
+		SELECT 	COUNT(EDU_DETIDX)
+		FROM 	EDU_DETAIL
+		WHERE 	EDU_DETAILSTATUS = 'EDUDT01' AND EDU_IDX = #{idx}
+	</select>
+	
+ 	<select id="edualllistpg" parameterType="Map" resultType="detaileduvo">
+		SELECT 	NN.*
+		FROM    (
+		        SELECT ROWNUM RN, N.*
+		        FROM    (
+		                SELECT 		*
+		                FROM 		EDU_DETAIL
+		                WHERE 		EDU_DETAILSTATUS = 'EDUDT01' AND EDU_IDX = #{idx}
+		                ORDER BY 	EDU_IDX DESC
+		                ) N
+        		) NN
+		WHERE 	RN BETWEEN #{begin} AND #{end}
+	</select>
+	
 	<select id="edudetlist" parameterType="string" resultType="detaileduvo">
 		SELECT * FROM EDU_DETAIL
-		WHERE EDU_IDX = #{edu_idx}
+		WHERE EDU_IDX = #{edu_idx} AND EDU_DETAILSTATUS = 'EDUDT01'
 	</select>
 	
 	<select id="edudetpick" parameterType="string" resultType="detaileduvo">
 		SELECT * FROM EDU_DETAIL
-		WHERE EDU_DETIDX = #{edu_detidx}
+		WHERE EDU_DETIDX = #{edu_detidx}  AND EDU_DETAILSTATUS = 'EDUDT01'
 	</select>	
 	
 	<select id="edudetalllist" resultType="detaileduvo">
-		SELECT * FROM EDU_DETAIL
+		SELECT * FROM EDU_DETAIL  WHERE EDU_DETAILSTATUS = 'EDUDT01'
 	</select>
 	<update id="leandelete" parameterType="string">
 			UPDATE EDU_DETAIL

@@ -17,6 +17,8 @@ public class LearnListImpl implements EduCommandServlet{
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 교육진행중 리스트 불러오기
+		
+		
 		List<DetailEducationVO> list = new EduDetImpl().detailEdu();
 		request.setAttribute("leanlist", list);
 		return "eduadmin/learnList.jsp";

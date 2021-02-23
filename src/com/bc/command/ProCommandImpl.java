@@ -1,7 +1,9 @@
 package com.bc.command;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import com.bc.model.dao.EduDAOImpl;
 import com.bc.model.dao.EduDetImpl;
 import com.bc.model.vo.DetailEducationVO;
 import com.bc.model.vo.EducationVO;
+import com.bc.model.vo.PagingVO;
 
 public class ProCommandImpl implements EduCommandServlet{
 	@Override
@@ -41,5 +44,28 @@ public class ProCommandImpl implements EduCommandServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public String listpag(HttpServletRequest request, HttpServletResponse response) {
+		subTitle(request, response);
+		listUtil(request, response);
+		EducationVO dEduVo = (EducationVO) request.getAttribute("eduVo");
+		int totalRecord = new EduDetImpl().getTotalRecord(dEduVo.getEdu_idx());
+		PagingVO pvo = new PagingVO(1, totalRecord);
+		String cPage = request.getParameter("cPage");
+		if (cPage != null) {
+			pvo = new PagingVO(Integer.parseInt(cPage), totalRecord);
+		}
+
+		Map<String, Integer> map = new HashMap<>();
+		map.put("begin", pvo.getBegin());
+		map.put("end", pvo.getEnd());
+		map.put("idx", Integer.parseInt(dEduVo.getEdu_idx()));
+		List<DetailEducationVO> list = new EduDetImpl().getAllPgList(map);
+		
+		request.setAttribute("totalRecord", totalRecord);
+		request.setAttribute("detaillist", list);
+		request.setAttribute("pvo", pvo);
+		return "eduadmin/proeducation.jsp";
 	}
 }
