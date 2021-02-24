@@ -81,6 +81,7 @@
 		frm.submit();
 	}
 </script>
+	<link rel="stylesheet" href="eduadmin/css/learnedudocumentupdatedelete.css">
 </head>
 <body>
 	<c:if test="${param.docparam == 'delete'}">
@@ -89,22 +90,18 @@
 	<c:if test="${param.docparam == 'update'}">
 		<h2>수정페이지</h2>
 	</c:if>
-	<div>
-		<section>
-			<div>
-				<form method="get">
+			<div class="divdiv">
+				<form class="formdd" method="get">
 					<ul>
 						<c:forEach var="ldVo" items="${ldVo}">
 							<c:if test="${ldVo.doc_status == 'LD01'}">
-								<li>
+								<li class="docli">
 									<table id="${ldVo.doc_idx}"
 										onclick="includeck('${ldVo.doc_idx}')">
 										<tbody>
 											<tr class="checkboxes">
 												<th>교육자료 내용</th>
 												<td>${ldVo.doc_text }</td>
-												<th>교육내용</th>
-												<td>${learnvo.edu_impt_contents }</td>
 											</tr>
 										</tbody>
 									</table> <input type="checkbox" id="${ldVo.doc_idx}"
@@ -122,7 +119,5 @@
 					</c:if>
 				</form>
 			</div>
-		</section>
-	</div>
 </body>
 </html>

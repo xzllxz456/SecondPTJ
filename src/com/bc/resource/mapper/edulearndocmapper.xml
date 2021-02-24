@@ -71,6 +71,33 @@ SELECT ROWNUM RN, N.*
         		) NN
 		WHERE RN BETWEEN #{begin} AND #{end}
 </select>
+
+<select id="LnDocsearchPg" parameterType="Map" resultType="com.bc.model.vo.LearnDocumentsVO">
+SELECT 	NN.*
+FROM    (
+SELECT ROWNUM RN, N.*
+	FROM (SELECT 
+	    D.doc_idx,
+		D.doc_text,
+		D.doc_filename,
+		D.doc_filelocal,
+		D.doc_status,
+		L.edu_period_start,
+		L.edu_period_end,
+		L.edu_impt_contents,
+		D.edu_detidx,
+		D.edu_idx,
+		E.edu_name
+	FROM MU_EDU E, EDU_DETAIL L, MU_LEARN_DOC D
+	WHERE D.edu_detidx = L.edu_detidx and D.EDU_IDX = E.EDU_IDX and d.doc_status = 'LD01'
+  	AND (D.DOC_TEXT LIKE '%' || #{searchText} || '%') OR 
+					(E.edu_name LIKE '%' || #{searchText} || '%')
+    ORDER BY D.DOC_IDX DESC
+		                ) N
+        		) NN
+		WHERE RN BETWEEN #{begin} AND #{end}
+</select>
+
  	<select id="edulndocvo" resultType="com.bc.model.vo.LearnDocumentsVO">
 	SELECT 
 	    D.doc_idx,

@@ -77,6 +77,17 @@
 		});
 	} 
 </script>
+<style>
+.edu-updt-div {
+	display: flex;
+}
+.edu-updt-div li {
+	margin: 10px;
+	position: relative;
+	display: block;
+	width: 100%;
+}
+</style>
 </head>
 <body>
 	<c:if test="${param.utilparam == 'update'}">
@@ -87,7 +98,7 @@
 	</c:if>
 	<div class="gray1">
 		<section>
-			<div>
+			<div class="edu-updt-div">
 				<form action="education" method="get">
 					<ul>
 						<c:forEach var="eduVo" items="${edulist }">

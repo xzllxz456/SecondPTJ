@@ -6,75 +6,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>교육자료 페이지</title>
-<style>
-.paging {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-.paging>li {
-    border: 1px solid #606060;
-    width: 3em;
-    height: 3em;
-    text-align: center;
-    line-height: 3em;
-    margin-right: 0.25em;
-}
-.paging>li:first-child, .paging>li:nth-child(2), 
-.paging>li:nth-last-child(2), .paging>li:last-child 
-{
-    border: none;
-    width: 2.2em;
-    font-size: 1.2em;
-    line-height: 2.6em;
-}
-.paging li i {
-    color: #808080;
-}
-.paging li>a {
-    text-decoration: none;
-    color: #606060;
-    font-weight: 400;
-}
-.now {
-    background-color: #1f1f1f;
-    color: whitesmoke;
-    font-weight: 500;
-    text-decoration: underline;
-}
-.paging li:not(li.now):hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-.paging .disable {
-    display: none;
-}
-</style>
+	<meta charset="UTF-8">
+	<title>교육자료 페이지</title>
+	<link rel="stylesheet" href="eduadmin/css/learnedudocument.css">
 </head>
 <body>
-	<form name="listForm" method="post" action="/common/fileDown.do"
-		target="iFrameDownload">
-		<section class="sect2 sect_pdb1">
-			<!-- 검색박스 -->
-			<div class="sch_area">
-				<div class="input_box type_red m_block in_button">
-					<div class="input_wrap">
-						<label for="searchText" class="blind">검색어 입력</label> <input
-							type="text" name="searchText" id="searchText" value=""
-							placeholder="검색어를 입력하세요.">
-					</div>
-					<button type="button" onclick="fn_searchAjaxList();">
-						<span class="fas fa-search">">검색</span>
-					</button>
-				</div>
+	<!-- 타이틀  -->
+	<div class="title_area" id="sub_title">
+		<h3 class="sub_title">
+			<span>교육자료실</span>
+		</h3>
+	</div>
+	
+	<!-- 검색박스 -->
+	<div class="sch_area">
+		<div class="search_box">
+			<div class="input_wrap">
+				<input type="text" name="searchText" id="searchText" placeholder="검색어를 입력하세요.">
 			</div>
-		</section>
-
-		<section class="sect_pd1">
-			<div class="sect_array">
-				<aside class="left_sect2">
+			<button type="button" onclick="fn_searchList('${pageNo}');">
+				<span class="fas fa-search">>검색</span>
+			</button>
+		</div>
+	</div>
+	
+	<form name="listForm" method="post" action="/common/fileDown.do"
+		target="iFrameDownload" class="docform">
+<!-- 				<aside class="left_sect2">
 					<div class="sch_result_ctrl">
 						<h4 class="accordion on">
 							<a href="#" role="button"><span>카테고리</span></a>
@@ -116,99 +74,82 @@
 							</ul>
 						</div>
 					</div>
-				</aside>
-				<section class="right_sect2">
-					<div class="brd_area">
-						<div id="listDiv">
-							<ul class="list_type1 edu_reference_list">
-							<c:forEach var="ldVo" items="${ldVo }">
-							<c:if test="${ldVo.doc_status == 'LD01'}">
-								<li>
-								
-								<span class="list_info">
-										<span>${ldVo.edu_name}</span>
-								</span>
-									<p class="subject">${ldVo.edu_impt_contents}</p>
-									<p class="subject_desc"></p>
-									<p style="line-height: 1.8;">
-										<span style="font-size: 12pt;">
-											${ldVo.doc_text }
-										</span>
-									</p>
-									<p style="line-height: 1.8;">
-										<span style="font-size: 12pt;">전시기간: ${ldVo.edu_period_start }
-											${ldVo.edu_period_end } </span><br> <br>
-									</p>
-									<p></p>
-									<div class="files_area">
-										<span class="download">
-										<a href="downloadAct?filename=${ldVo.doc_filename }">${ldVo.doc_filename }</a>
-										
-										 <!-- <a href="javascript:;"
-											onclick="downloadFiles('/upload/board/201309040000011/2020/05/2020051802192963013653.pdf','MMCA 소장품 하이라이트 2020+_어린이 전시감상 활동지.pdf','202005180007209','202005180006281','Y'); return false;"
-											class="ftclr_red1">MMCA 소장품 하이라이트 2020+_어린이 전시감상 활동지.pdf
-											</a> -->
-										</span>
-									</div>
-								</li>
-								</c:if>
-								</c:forEach>
-							</ul>
-						</div>
+				</aside> -->
+		
+	<!-- 청소년, 성인, 전문인 리스트 -->
+		<div id="list_div">
+			<ul class="list_ul">
+			<c:forEach var="ldVo" items="${ldVo }">
+			<c:if test="${ldVo.doc_status == 'LD01'}">
+				<li>
+					<span>${ldVo.edu_name}</span>
+					<p class="subject">${ldVo.edu_impt_contents}</p>
+					<p><span>${ldVo.doc_text }</span></p>
+					<p><span>전시기간: ${ldVo.edu_period_start} ~ ${ldVo.edu_period_end }</span></p>
+					<div class="files_area">
+						<span class="download">
+							<a href="downloadAct?filename=${ldVo.doc_filename }">${ldVo.doc_filename }</a>
+						</span>
 					</div>
-				</section>
-				<table border="">
-			<tfoot>
-				<tr>
-					<td>
-						<ol class="paging">
-					<c:choose>
-						<c:when test="${pvo.nowBlock eq 1}">
-							<li class="disable"><i class="fas fa-angle-double-left"></i></li>
-							<li class="disable"><i class="fas fa-angle-left"></i></li>
-						</c:when>
-						<c:when test="${pvo.nowBlock > 1}">
-							<li onclick="goPage('1')"><i class="fas fa-angle-double-left"></i></li>
-							<li onclick="goPage('${pvo.nowPage - 2}')"><i class="fas fa-angle-left"></i></li>
-						</c:when>
-					</c:choose>
-					
-					<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
-						<c:if test="${pageNo == pvo.nowPage }">
-							<li class="now">${pageNo}</li>
-						</c:if>
-						<c:if test="${pageNo ne pvo.nowPage}">
-							<li onclick="goPage('${pageNo}')">${pageNo}</li>
-						</c:if>
-					</c:forEach>	
-						
-					<c:choose>
-						<c:when test="${pvo.nowBlock eq pvo.totalBlock}">
-							<li class="disable"><i class="fas fa-angle-right"></i></li>
-							<li class="disable"><i class="fas fa-angle-double-right"></i></li>
-						</c:when>
-						<c:when test="${pvo.nowBlock < pvo.totalBlock}">
-							<li onclick="goPage('${pvo.nowPage + 2}')"><i class="fas fa-angle-right"></i></li>
-							<li onclick="goPage('${pvo.totalPage}')"><i class="fas fa-angle-double-right"></i></li>
-						</c:when>
-					</c:choose>	
-						</ol>
-					</td>
-				</tr>
-			</tfoot>
-				</table>
-				<div>
-					<a href="adDocInsertApi">추가</a>
-					<a href="docutil?docparam=update">수정</a>
-					<a href="docutil?docparam=delete">삭제</a>
-				</div>
-			</div>
-		</section>
+				</li>
+			</c:if>
+			</c:forEach>
+			<c:if test="${empty ldVo}">
+				<li class="none">
+					<span>검색결과가 존재하지 않습니다.</span>
+				</li>
+			</c:if>
+			</ul>
+		<div>
+		
+		<ol class="paging">
+			<c:choose>
+				<c:when test="${pvo.nowBlock eq 1}">
+					<li class="disable"><i class="fas fa-angle-double-left"></i></li>
+					<li class="disable"><i class="fas fa-angle-left"></i></li>
+				</c:when>
+				<c:when test="${pvo.nowBlock > 1}">
+					<li onclick="goPage('1')"><i class="fas fa-angle-double-left"></i></li>
+					<li onclick="goPage('${pvo.nowPage - 2}')"><i class="fas fa-angle-left"></i></li>
+				</c:when>
+			</c:choose>
+			
+			<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
+				<c:if test="${pageNo == pvo.nowPage }">
+					<li class="now">${pageNo}</li>
+				</c:if>
+				<c:if test="${pageNo ne pvo.nowPage}">
+					<li onclick="goPage('${pageNo}')">${pageNo}</li>
+				</c:if>
+			</c:forEach>	
+				
+			<c:choose>
+				<c:when test="${pvo.nowBlock eq pvo.totalBlock}">
+					<li class="disable"><i class="fas fa-angle-right"></i></li>
+					<li class="disable"><i class="fas fa-angle-double-right"></i></li>
+				</c:when>
+				<c:when test="${pvo.nowBlock < pvo.totalBlock}">
+					<li onclick="goPage('${pvo.nowPage + 2}')"><i class="fas fa-angle-right"></i></li>
+					<li onclick="goPage('${pvo.totalPage}')"><i class="fas fa-angle-double-right"></i></li>
+				</c:when>
+			</c:choose>	
+		</ol>
+		<div class="link-a-btn">
+			<a class="a_btn" href="adDocInsertApi">추가</a>
+			<a class="a_btn" href="docutil?docparam=update">수정</a>
+			<a class="a_btn" href="docutil?docparam=delete">삭제</a>
+		</div>	
+		</div>
+	</div>
 	</form>
 </body>
 <script>
 	function goPage(pageNum) {
 		location.href = "edlearndoc?cPage=" + pageNum;
+	}
+	function fn_searchList(pageNum) {
+		let searchText = document.querySelector('#searchText').value;
+		location.href = "edlearndoc?cPage=" + pageNum + "&searchtext=" + searchText;
 	}
 </script>
 </html>

@@ -7,54 +7,9 @@
 <meta charset="UTF-8">
 <title>leanEducation</title>
 <style>
-span{
-     display: block;
-}
 
-/*----- 페이징 처리 -----*/
-.paging {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-.paging>li {
-    border: 1px solid #606060;
-    width: 3em;
-    height: 3em;
-    text-align: center;
-    line-height: 3em;
-    margin-right: 0.25em;
-}
-.paging>li:first-child, .paging>li:nth-child(2), 
-.paging>li:nth-last-child(2), .paging>li:last-child 
-{
-    border: none;
-    width: 2.2em;
-    font-size: 1.2em;
-    line-height: 2.6em;
-}
-.paging li i {
-    color: #808080;
-}
-.paging li>a {
-    text-decoration: none;
-    color: #606060;
-    font-weight: 400;
-}
-.now {
-    background-color: #1f1f1f;
-    color: whitesmoke;
-    font-weight: 500;
-    text-decoration: underline;
-}
-.paging li:not(li.now):hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-.paging .disable {
-    display: none;
-}
 </style>
+	<link rel="stylesheet" href="eduadmin/css/learnlist.css">
 </head>
 <body>
 	<div class="title_area">
@@ -62,20 +17,39 @@ span{
 			<span>참여신청</span>
 		</h3>
 	</div>
-	<div>
-		<h4>예약중인 교육</h4>
+	<div class="title_area">
+		<h4 class="sub_title">
+			<span>예약중인 교육</span>
+		</h4>
 	</div>
+	
+		<!-- 검색박스 -->
+	<div class="sch_area">
+		<div class="search_box">
+			<div class="input_wrap">
+				<input type="text" name="searchText" id="searchText" placeholder="검색어를 입력하세요.">
+			</div>
+			<button type="button" onclick="fn_searchList('${pageNo}')">
+				<span class="fas fa-search">>검색</span>
+			</button>
+		</div>
+	</div>
+	
 	<div class="sect1">
 		<div class="brd_area">
 			<div class="brd_title">
-				<ul class="list_type4 career" id="ingList">
+				<ul class="list_type4-career" id="ingList">
 				<c:forEach var="leanvo" items="${leanlist }">
 					<c:if test="${leanvo.edu_detailstatus == 'EDUDT01'}">
-					<li><a href="lean?param=${leanvo.edu_detidx }" class="place_type">
-							<span>${leanvo.edu_detailname }</span> 
-							<span>${leanvo.edu_period_start } ~ ${leanvo.edu_period_end }</span> 
-							<span class="state_reserving">예약중</span>
+					
+					<li>
+						<div class="event-info">
+						<a href="lean?param=${leanvo.edu_detidx }" class="place_type">
+							<span class="selectspan">${leanvo.edu_detailname }</span> 
+							<span class="selectspan">${leanvo.edu_period_start } ~ ${leanvo.edu_period_end }</span> 
+							<span class="selectspan">예약중</span>
 						</a>
+						</div>
 					</li>
 					</c:if>
 				</c:forEach>
@@ -84,47 +58,56 @@ span{
 			</div>
 		</div>
 	</div>
-	<div>
+	<ol class="paging">
+		<c:choose>
+			<c:when test="${pvo.nowBlock eq 1}">
+				<li class="disable"><i class="fas fa-angle-double-left"></i></li>
+				<li class="disable"><i class="fas fa-angle-left"></i></li>
+			</c:when>
+			<c:when test="${pvo.nowBlock > 1}">
+				<li onclick="goPage('1')"><i class="fas fa-angle-double-left"></i></li>
+				<li onclick="goPage('${pvo.nowPage - 1}')"><i
+					class="fas fa-angle-left"></i></li>
+			</c:when>
+		</c:choose>
+
+		<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
+			<c:if test="${pageNo == pvo.nowPage }">
+				<li class="now">${pageNo}</li>
+			</c:if>
+			<c:if test="${pageNo ne pvo.nowPage}">
+				<li onclick="goPage('${pageNo}')">${pageNo}</li>
+			</c:if>
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${pvo.nowBlock eq pvo.totalBlock}">
+				<li class="disable"><i class="fas fa-angle-right"></i></li>
+				<li class="disable"><i class="fas fa-angle-double-right"></i></li>
+			</c:when>
+			<c:when test="${pvo.nowBlock < pvo.totalBlock}">
+				<li onclick="goPage('${pvo.nowPage + 1}')"><i
+					class="fas fa-angle-right"></i></li>
+				<li onclick="goPage('${pvo.totalPage}')"><i
+					class="fas fa-angle-double-right"></i></li>
+			</c:when>
+		</c:choose>
+	</ol>
+	<div class="link-a-btn">
 		<a href="learnUtil?paramUtil=learnInsert" class="a_btn"><span>추가</span></a>
 		<a href="learnUtil?paramUtil=learnUpdate" class="a_btn"><span>수정</span></a>
 		<a href="learnUtil?paramUtil=learnDelete" class="a_btn"><span>삭제</span></a>
 	</div>
-				<ol class="paging">
-					<c:choose>
-						<c:when test="${pvo.nowBlock eq 1}">
-							<li class="disable"><i class="fas fa-angle-double-left"></i></li>
-							<li class="disable"><i class="fas fa-angle-left"></i></li>
-						</c:when>
-						<c:when test="${pvo.nowBlock > 1}">
-							<li onclick="goPage('1')"><i class="fas fa-angle-double-left"></i></li>
-							<li onclick="goPage('${pvo.nowPage - 1}')"><i class="fas fa-angle-left"></i></li>
-						</c:when>
-					</c:choose>
-					
-					<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
-						<c:if test="${pageNo == pvo.nowPage }">
-							<li class="now">${pageNo}</li>
-						</c:if>
-						<c:if test="${pageNo ne pvo.nowPage}">
-							<li onclick="goPage('${pageNo}')">${pageNo}</li>
-						</c:if>
-					</c:forEach>	
-						
-					<c:choose>
-						<c:when test="${pvo.nowBlock eq pvo.totalBlock}">
-							<li class="disable"><i class="fas fa-angle-right"></i></li>
-							<li class="disable"><i class="fas fa-angle-double-right"></i></li>
-						</c:when>
-						<c:when test="${pvo.nowBlock < pvo.totalBlock}">
-							<li onclick="goPage('${pvo.nowPage + 1}')"><i class="fas fa-angle-right"></i></li>
-							<li onclick="goPage('${pvo.totalPage}')"><i class="fas fa-angle-double-right"></i></li>
-						</c:when>
-					</c:choose>	
-				</ol>
 </body>
 <script>
 	function goPage(pageNum) {
-		location.href = "education?cPage=" + pageNum + "&param=${param.param}";
+		location.href = "learnlist?cPage=" + pageNum;
 	}
+	function fn_searchList(pageNum) {
+		let searchText = document.querySelector('#searchText').value;
+		location.href = "learnsearch?cPage=" + pageNum + "&searchtext=" + searchText;
+		
+	}
+	
 </script>
 </html>

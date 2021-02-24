@@ -6,108 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>교육 > 미술관교육소개</title>
-
+<link rel="stylesheet" href="eduadmin/css/education.css">
 <style>
-/* html,
-body {
-	box-sizing: border-box;
-	height: 100%;
-} */
-.intro_text {
-	font-size: 1.3em;
-	font-weight: bold;;
-}
 
-.intro_text_row {
-	position: relative;
-	padding-left: 50px;
-}
-
-.intro_text span:before {
-	content: '';
-	position: absolute;
-	background-color: black;
-	display: block;
-	width: 2px;
-	height: 16px;
-	top: 4px;
-	left: -10px;
-	background-color: #e94040;
-}
-
-.program_list_tit {
-	text-align: center;
-	font-size: 2.25em;
-	font-weight: 400;
-	line-height: 1;
-	margin: 30px 0 40px
-}
-/*     .intro_text_row :before{
-        content: '';
-        position: absolute;
-        display: block;
-        left: 100; top: 100px;
-        width: 100px; height: calc(100% - 4px);
-        background-color: #e1e1e1;
-        border-style: solid;
-    } */
-.intro_text span {
-	position: relative;
-}
-
-.sub_title {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-.sub_title {
-	text-align: center;
-	font-size: 2.25em;
-	font-weight: 400;
-	line-height: 1;
-	margin: 30px 0 40px
-}
-
-.sub_title span {
-	display: inline-block;
-	border-top: 1px solid #0a1923;
-	padding: 6px 1px 0;
-}
-
-.sub_title+p {
-	position: relative;
-	text-align: center;
-	font-size: 0.875em;
-	font-weight: 400;
-}
-
-.gray1 {
-	margin: 0;
-	padding: 0;
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	background-color: gray;
-}
-
-.edu_list {
-	position: relative;
-	display: flex;
-	margin: 30px 10px 40px;
-	width: 30%;
-}
-
-.edu-list-dv ul {list-style-type:none; margin:30px; padding:10px;}
-
-.edu-li-span{
-	position: absolute;
-	top: -25px;
-    left: 44px;
-}
-
-.edu-li-img{
-padding: 30px;}
 </style>
 <script>
 	function insert_btn(frm) {
@@ -143,11 +44,7 @@ padding: 30px;}
 		</div>
 	</section>
 	<p class="program_list_tit">교육프로그램 안내</p>
-		<div>
-			<a href="adminEduBtn?utilparam=insert">추가</a>
-			<a href="adminEduBtn?utilparam=delete">삭제</a>
-			<a href="adminEduBtn?utilparam=update">수정</a>
-		</div>	
+	
 	<div class="gray1">
 		<section>
 			<div class="edu-list-dv">
@@ -167,5 +64,10 @@ padding: 30px;}
 			</div>
 		</section>
 	</div>
+		<div class="link-a-btn">
+			<a class="a_btn" href="adminEduBtn?utilparam=insert">추가</a>
+			<a class="a_btn" href="adminEduBtn?utilparam=delete">삭제</a>
+			<a class="a_btn" href="adminEduBtn?utilparam=update">수정</a>
+		</div>	
 </body>
 </html>

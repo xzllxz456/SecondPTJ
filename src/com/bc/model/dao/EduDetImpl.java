@@ -60,8 +60,44 @@ public class EduDetImpl implements EduDetInterface{
 			eduvo.setEdu_period_start(eduvo.getEdu_period_start().substring(0, 10));
 			eduvo.setEdu_period_end(eduvo.getEdu_period_end().substring(0, 10));
 		}
-		
 		return list;
-		
+	}
+
+	public int getTotalRecord() {
+		int result = 0;
+		SqlSession ss = DBService.getFactory().openSession();
+		result = ss.selectOne("edudet.totalRecordall");
+		ss.close();
+		return result;
+	}
+	
+	public int getTotalRecord2(String str) {
+		int result = 0;
+		SqlSession ss = DBService.getFactory().openSession();
+		result = ss.selectOne("edudet.aaaa", str);
+		ss.close();
+		return result;
+	}
+	
+	public List<DetailEducationVO> getAllList(Map<String, Integer> map) {
+		SqlSession session = DBService.getFactory().openSession(); 
+		List<DetailEducationVO> list = session.selectList("edudet.edualllistpag", map); 
+		session.close();
+		for (DetailEducationVO eduvo : list) {
+			eduvo.setEdu_period_start(eduvo.getEdu_period_start().substring(0, 10));
+			eduvo.setEdu_period_end(eduvo.getEdu_period_end().substring(0, 10));
+		}
+		return list;
+	}
+	
+	public List<DetailEducationVO> LnDetSearchPg(Map<String, String> map) {
+		SqlSession session = DBService.getFactory().openSession(); 
+		List<DetailEducationVO> list = session.selectList("edudet.edusearchlistpag", map); 
+		session.close();
+		for (DetailEducationVO eduvo : list) {
+			eduvo.setEdu_period_start(eduvo.getEdu_period_start().substring(0, 10));
+			eduvo.setEdu_period_end(eduvo.getEdu_period_end().substring(0, 10));
+		}
+		return list;
 	}
 }

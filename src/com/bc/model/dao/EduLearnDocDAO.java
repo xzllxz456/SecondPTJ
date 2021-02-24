@@ -50,7 +50,7 @@ public class EduLearnDocDAO {
 		return res;
 	}
 
-	public List<LearnDocumentsVO> LnDocAllListPg(Map<String, Integer> map) {
+	public List<LearnDocumentsVO> LnDocAllListPg(Map<String, String> map) {
 		SqlSession session = DBService.getFactory().openSession();
 		List<LearnDocumentsVO> list = session.selectList("eddoc.edulndocvopg", map);
 		session.close();
@@ -82,5 +82,16 @@ public class EduLearnDocDAO {
 			res++;
 		}
 		return res;
+	}
+	
+	public List<LearnDocumentsVO> LnDocsearchPg(Map<String, String> map) {
+		SqlSession session = DBService.getFactory().openSession();
+		List<LearnDocumentsVO> list = session.selectList("eddoc.LnDocsearchPg", map);
+		session.close();
+		for (LearnDocumentsVO ldvo : list) {
+			ldvo.setEdu_period_start(ldvo.getEdu_period_start().substring(0, 10));
+			ldvo.setEdu_period_end(ldvo.getEdu_period_end().substring(0, 10));
+		}
+		return list;
 	}
 }

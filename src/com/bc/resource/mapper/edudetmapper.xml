@@ -9,6 +9,53 @@
 		FROM 	EDU_DETAIL
 		WHERE 	EDU_DETAILSTATUS = 'EDUDT01' AND EDU_IDX = #{idx}
 	</select>
+	<select id="totalRecordall" resultType="int">
+		SELECT 	COUNT(EDU_DETIDX)
+		FROM 	EDU_DETAIL
+		WHERE 	EDU_DETAILSTATUS = 'EDUDT01'
+	</select>
+	
+	<select id="edualllistpag" parameterType="Map" resultType="detaileduvo">
+		SELECT 	NN.*
+		FROM    (
+		        SELECT ROWNUM RN, N.*
+		        FROM    (
+		                SELECT 		*
+		                FROM 		EDU_DETAIL
+		                WHERE 		EDU_DETAILSTATUS = 'EDUDT01'
+		                ORDER BY 	EDU_IDX DESC
+		                ) N
+        		) NN
+		WHERE 	RN BETWEEN #{begin} AND #{end}
+	</select>
+	<select id="aaaa" parameterType="string" resultType="int">
+		SELECT 	COUNT(EDU_DETIDX)
+		FROM 	EDU_DETAIL
+		WHERE 	
+				         ((EDU_TARGET LIKE '%' || #{searchText} || '%') OR
+		                 (EDU_IMPT_CONTENTS LIKE '%' || #{searchText} || '%') OR
+		                 (EDU_DETAILNAME LIKE '%' || #{searchText} || '%') OR
+		                 (EDU_DETAILTARGET LIKE '%' || #{searchText} || '%'))
+		                  AND 	EDU_DETAILSTATUS = 'EDUDT01'
+	</select>
+	<select id="edusearchlistpag" parameterType="Map" resultType="detaileduvo">
+		SELECT 	NN.*
+		FROM    (
+		        SELECT ROWNUM RN, N.*
+		        FROM    (
+		                SELECT 		*
+		                FROM 		EDU_DETAIL
+		                WHERE 	
+		              (  (EDU_TARGET LIKE '%' || #{searchText} || '%') OR
+		                 (EDU_IMPT_CONTENTS LIKE '%' || #{searchText} || '%') OR
+		                 (EDU_DETAILNAME LIKE '%' || #{searchText} || '%') OR
+		                 (EDU_DETAILTARGET LIKE '%' || #{searchText} || '%')) 
+		                 AND 	EDU_DETAILSTATUS = 'EDUDT01'
+		                ORDER BY 	EDU_IDX DESC
+		                ) N
+        		) NN
+		WHERE 	RN BETWEEN #{begin} AND #{end}
+	</select>
 	
  	<select id="edualllistpg" parameterType="Map" resultType="detaileduvo">
 		SELECT 	NN.*

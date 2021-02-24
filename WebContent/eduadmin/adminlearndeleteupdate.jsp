@@ -103,6 +103,21 @@
 		frm.submit();
 	}
 </script>
+<style>
+.upt-div {
+	display: flex;
+}	
+.utilgo-in {
+	position: sticky;
+}
+
+.edu-up-table {
+	margin: 10px;
+	position: relative;
+	display: block;
+	width: 100%;
+}
+</style>
 </head>
 <body>
 <c:if test="${param.paramUtil == 'learnDelete'}">
@@ -111,14 +126,14 @@
 <c:if test="${param.paramUtil == 'learnUpdate'}">
 	<h2>수정페이지</h2>
 </c:if>
-	<div>
+	<div class="upt-div">
 		<section>
 			<div>
 				<form method="get">
 					<ul>
 						<c:forEach var="learnvo" items="${learnlist}">
 						<c:if test="${learnvo.edu_detailstatus == 'EDUDT01'}">
-							<li>
+							<li class="edu-up-table">
 								<table id="${learnvo.edu_detidx}" onclick="includeck('${learnvo.edu_detidx}')">
 									<tbody>
 										<tr class="checkboxes">
@@ -177,11 +192,11 @@
 						</c:forEach>
 					</ul>
 					<c:if test="${param.paramUtil == 'learnDelete'}">
-						<input type="button" value="삭제" onclick="deleteGo(this.form)">
+						<input class="utilgo-in" type="button" value="삭제" onclick="deleteGo(this.form)">
 					</c:if>
 					<c:if test="${param.paramUtil == 'learnUpdate'}">
 						<input type="hidden" name="paramUtil" value="updateEdu">
-						<input type="button" value="수정" onclick="updateGo(this.form)">
+						<input class="utilgo-in" type="button" value="수정" onclick="updateGo(this.form)">
 					</c:if>
 				</form>
 			</div>

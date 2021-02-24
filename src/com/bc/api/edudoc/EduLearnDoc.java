@@ -26,15 +26,21 @@ public class EduLearnDoc extends HttpServlet {
 		PagingVO pvo = new PagingVO(1, totalRecord);
 		
 		String cPage = request.getParameter("cPage");
-		if(cPage != null) {
+		if(cPage != null && !("".equals(cPage))) {
 			pvo = new PagingVO(Integer.parseInt(cPage), totalRecord);
 		}
 		
-		Map<String, Integer> map = new HashMap<>();
-		map.put("begin", pvo.getBegin());
-		map.put("end", pvo.getEnd());
-		
-		List<LearnDocumentsVO> ldVo = new EduLearnDocDAO().LnDocAllListPg(map);
+		String searchText = request.getParameter("searchtext");
+		Map<String, String> map = new HashMap<>();
+		map.put("begin", pvo.getBegin() + "");
+		map.put("end", pvo.getEnd() + "");
+		map.put("searchText", searchText);
+		List<LearnDocumentsVO> ldVo = null;
+		if(searchText != null) {
+			ldVo = new EduLearnDocDAO().LnDocsearchPg(map);
+		} else {
+			ldVo = new EduLearnDocDAO().LnDocAllListPg(map);
+		}
 		request.setAttribute("ldVo", ldVo);
 		request.setAttribute("totalRecord", totalRecord);
 		request.setAttribute("pvo", pvo);

@@ -8,7 +8,7 @@ import lombok.ToString;
 public class PagingVO {
 
 	// 기본 세팅값 (변하지 않음)
-	private int numPerPage = 2; //하나의 페이지에 표시할 게시글 수
+	private int numPerPage = 3; //하나의 페이지에 표시할 게시글 수
 	private int pagePerBlock = 2; //블록당 표시하는 페이지 갯수
 
 	// 유동적인 필드 
