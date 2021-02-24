@@ -1,119 +1,98 @@
-/* html,
-body {
-	box-sizing: border-box;
-	height: 100%;
-} */
- a:link { color: black; text-decoration: none;}
- a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
-.intro_text {
-	font-size: 1.3em;
-	font-weight: bold;;
+a:link { color: black; text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:hover { color: black; text-decoration: underline;}
+
+.title-wrap {
+    display: flex;
+    justify-content: center;
+}
+.title {
+    margin-top: 1.225em;
+    font-size: 2.5em;
+    font-weight: 500;
+    color: #222222;
+    border-top: 1px solid #606060;
+    padding: 0.35em 0;
 }
 
+/* 소개글 */
+.intro_container {
+	display: flex;
+	justify-content: center;
+}
 .intro_text_row {
-	position: relative;
-	padding-left: 50px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 6em;
+	padding: 0 120px;
+}
+div.red-block {
+	width: 20px;
+	height: 6px;
+	background-color: #df0000;
+	margin-bottom: 0.2em;
+}
+.intro_text {
+	width: 1550px;
+	font-size: 1.3rem;
+	font-weight: 600;
+	line-height: 1.6em;
+	padding-left: 12px;
+	padding-bottom: 0.8em;
+	border-bottom: 1px solid #ccc;
+}
+.intro_extra_text {
+	padding: 12px;
+	line-height: 1.7em;
 }
 
-.intro_text span:before {
-	content: '';
-	position: absolute;
-	background-color: black;
-	display: block;
-	width: 2px;
-	height: 16px;
-	top: 4px;
-	left: -10px;
-	background-color: #e94040;
-}
-
+/* 교육 프로그램 안내 */
 .program_list_tit {
+	margin-top: 3em;
+	margin-bottom: 1em;
 	text-align: center;
 	font-size: 2.25em;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 1;
-	margin: 30px 0 40px
-}
-/*     .intro_text_row :before{
-        content: '';
-        position: absolute;
-        display: block;
-        left: 100; top: 100px;
-        width: 100px; height: calc(100% - 4px);
-        background-color: #e1e1e1;
-        border-style: solid;
-    } */
-.intro_text span {
-	position: relative;
 }
 
-.sub_title {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-.sub_title {
-	text-align: center;
-	font-size: 2.25em;
-	font-weight: 400;
-	line-height: 1;
-	margin: 30px 0 40px
-}
-
-.sub_title span {
-	display: inline-block;
-	border-top: 1px solid #0a1923;
-	padding: 6px 1px 0;
-}
-
-.sub_title+p {
-	position: relative;
-	text-align: center;
-	font-size: 0.875em;
-	font-weight: 400;
-}
-
-.gray1 {
+/* 전문인, 성인, 청소년 교육 */
+.gray {
 	margin: 0;
-	padding: 0;
-	position: relative;
-	display: inline-block;
+	padding: 1em 1em 5em 1em;
 	width: 100%;
 	height: 100%;
-	background-color: gray;
+	background-color: #e2e1d5;
 }
-
-.edu_list {
-	position: relative;
+.edu-list-dv ul {
+	list-style-type: none;
 	display: flex;
-	margin: 30px 10px 40px;
-	width: 30%;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
 }
-
-.edu-list-dv ul {list-style-type:none; margin:30px; padding:10px;}
-
-.edu-li-span{
-	position: absolute;
-	top: -25px;
-    left: 44px;
+.edu-list-dv li {
+	margin-top: 20px;	
 }
-
-.edu-li-img{
-padding: 30px;}
-
+.edu-list-dv li:not(:last-child) {
+	margin-right: 50px;
+}
+.edu-li-span {
+	font-size: 1rem;
+	line-height: 1.5em;
+	font-weight: 500;
+}
 .link-a-btn {
-	display: flex;
-	justify-content: flex-end;
-	text-align: right;
+   padding-top: 30px;
+   display: flex;
+   justify-content: center;
+   margin-right: -1400px;
 }
-
 .a_btn {
-	padding: 10px;
-	margin: 5px;
-	display: inline-block;
-	background-color: gray;
-	border: 1px solid gray;
-	border-radius: 5px;
-	text-decoration: none;
+   padding: 10px;
+   margin: 5px;
+   background-color: gray;
+   border: 1px solid gray;
+   border-radius: 5px;
+   text-decoration: none;
 }

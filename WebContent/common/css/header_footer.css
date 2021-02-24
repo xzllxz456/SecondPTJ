@@ -1,10 +1,10 @@
 body {
 	font-family: 'Noto Sans KR', sans-serif !important;
 }
-a {
+.header a {
     text-decoration: none;
 }
-li {
+.header li {
     list-style: none;
 }
 .header {
@@ -34,6 +34,10 @@ li {
     font-size: 0.7em;
     font-weight: 500;
 }
+#login-bar-name {
+	color: #8f8f8f;
+	padding : 0 0.8em;
+}
 
 
 /*----- 메뉴 + 로고 바 -----*/
@@ -47,6 +51,7 @@ li {
     /* box-shadow: 0 0.2em 5px #e0e0e0; */
 }
 
+
 /*----- 로고 이미지 -----*/
 .navbar-logo {
     /* background-color: thistle; */
@@ -56,9 +61,10 @@ li {
     margin-left: 3vw;
 }
 .navbar-logo img {
-    width: 225px;
+    width: 250px;
     height: auto;
 }
+
 
 /*----- 메뉴 텍스트 3개 -----*/
 .navbar-menu {
@@ -104,6 +110,7 @@ li.menu:hover a.a-menu {
 	color: #db0b2e;
 }
 
+
 /*----- 드롭다운 메뉴 -----*/
 .submenu {
     margin: 0;
@@ -135,7 +142,6 @@ li.menu:hover .submenu {
     opacity: 1;
     pointer-events: auto;
 }
-
 #submenu2 {
     padding-left: 8em;
 }
@@ -167,6 +173,7 @@ li.menu:hover .submenu {
 		width: 100vw;
 		border-bottom: 1px solid #b1b1b1;
 		padding-left: 0;
+		margin-left: 0;
 		justify-content: center;
 	}
 	.navbar-menu {
@@ -183,7 +190,6 @@ li.menu:hover .submenu {
 	#submenu2 {
 		padding-left: 16vw;
 	}
-	
 	#submenu3 {
 		padding-left: 14vw;
 	}
@@ -203,11 +209,12 @@ footer {
 
 /*----- 로고있는 부분(왼쪽) -----*/
 .leftBar {
-	/* box-sizing: border-box; */
-	width: 30%;
+	box-sizing: border-box;
+	width: 35%;
 	display: flex;
     justify-content: left;
     margin-top: 45px;
+    margin-left: 5vw;
 }
 .leftBar img {
 	width: 235px;
@@ -218,11 +225,11 @@ footer {
 
 /*----- 텍스트있는 부분(오른쪽) -----*/
 .rightBar {
-	/* box-sizing: border-box; */
+	box-sizing: border-box;
 	display: flex;
     flex-direction: column;
     align-items: flex-start;
-	width: 60%;
+	width: 65%;
 	color: #8f8f8f;
 	word-wrap: break-word;
 	text-align: left;

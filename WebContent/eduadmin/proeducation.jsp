@@ -89,11 +89,13 @@
 						</c:when>
 					</c:choose>	
 						</ol>
+						<c:if test="${login.mem_id eq 'admin'}">
 	<div class="a-div-btn">
 		<a href="learnUtil?paramUtil=learnInsert" class="a_btn"><span>추가</span></a>
 		<a href="learnUtil?paramUtil=learnUpdate" class="a_btn"><span>수정</span></a>
 		<a href="learnUtil?paramUtil=learnDelete" class="a_btn"><span>삭제</span></a>
 	</div>
+	</c:if>
 </body>
 <script>
 	function goPage(pageNum) {

@@ -1,7 +1,115 @@
  a:link { color: black; text-decoration: none;}
  a:visited { color: black; text-decoration: none;}
  a:hover { color: black; text-decoration: underline;}
+
+.title-wrap {
+    display: flex;
+    justify-content: center;
+}
+.title {
+    margin-top: 1.225em;
+    font-size: 2.5em;
+    font-weight: 500;
+    color: #222222;
+    border-top: 1px solid #606060;
+    padding: 0.35em 0;
+}
+.program_list_tit {
+	text-align: center;
+	font-size: 2.25em;
+	font-weight: 400;
+	line-height: 1;
+	margin: 30px 0 40px
+}
+
+.sub_title {
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
+	font-size: 2.25em;
+	font-weight: 400;
+	line-height: 1;
+	margin: 30px 0 40px
+}
+
+.sub_title span {
+	display: inline-block;
+	border-top: 1px solid #0a1923;
+	padding: 6px 1px;
+}
+
+.sub_title+p {
+	position: relative;
+	text-align: center;
+	font-size: 0.875em;
+	font-weight: 400;
+}
+
+/* 검색 박스 */
+.sch_area {
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+.search_box {
+	display: flex;
+	justify-content: center;
+	height: 50px;
+	margin-bottom: 3em;
+}
+.input_wrap input {
+	height: 44px;
+}
+
+.docform {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* 청소년, 성인, 전문인 리스트 */
+#list_div {
+	margin-top: 3em;
+	margin-bottom: 3em;
+	display: flex;
+	justify-content: center;
+}
+.list_ul li {
+	margin: 15px;
+}
+.list_ul li:not(:last-child) {
+	border-right: 3px solid #b1b1b1;
+	padding-right: 30px;
+}
+.list_ul a {
+	color: #1b1b1b;
+	font-weight: 500;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+/* 추가 수정 삭제 */
+.link-a-btn {
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 100px;
+	margin-bottom: 3em;
+}
+.a_btn {
+	padding: 10px;
+	margin: 5px;
+	display: inline-block;
+	background-color: gray;
+	border: 1px solid gray;
+	border-radius: 5px;
+	text-decoration: ;
+}
+
+
+/* 페이징 */
 .paging {
+	margin-top: 5em;
+	margin-bottom: 3em;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -44,91 +152,3 @@
     display: none;
 }
 
-.program_list_tit {
-	text-align: center;
-	font-size: 2.25em;
-	font-weight: 400;
-	line-height: 1;
-	margin: 30px 0 40px
-}
-
-.sub_title {
-	margin-top: 0;
-	margin-bottom: 0;
-	text-align: center;
-	font-size: 2.25em;
-	font-weight: 400;
-	line-height: 1;
-	margin: 30px 0 40px
-}
-
-.sub_title span {
-	display: inline-block;
-	border-top: 1px solid #0a1923;
-	padding: 6px 1px;
-}
-
-.sub_title+p {
-	position: relative;
-	text-align: center;
-	font-size: 0.875em;
-	font-weight: 400;
-}
-
-/* 검색 박스 */
-.search_box {
-	display: flex;
-	justify-content: center;
-	height: 50px;
-	margin-bottom: 3em;
-}
-.input_wrap input {
-	height: 44px;
-}
-
-.docform {
-    display: flex;
-    justify-content: center;
-}
-/* 청소년, 성인, 전문인 리스트 */
-.list_ul li {
-	margin: 15px;
-}
-.list_ul li:not(:last-child) {
-	border-right: 3px solid #b1b1b1;
-	padding-right: 30px;
-}
-.list_ul a {
-	color: #1b1b1b;
-	font-weight: 500;
-	text-decoration: underline;
-	cursor: pointer;
-}
-
-
-
-
-
-.extra_tit_area {
-	margin: 30px 0 30px;
-	display: flex;
-	position: relative;
-	width: 100%;
-	text-align: center;
-	justify-content: center;
-}
-.link-a-btn {
-	display: flex;
-	justify-content: flex-end;
-	text-align: right;
-}
-
-.a_btn {
-	padding: 10px;
-	margin: 5px;
-	display: inline-block;
-	background-color: gray;
-	border: 1px solid gray;
-	border-radius: 5px;
-	text-decoration: ;
-}

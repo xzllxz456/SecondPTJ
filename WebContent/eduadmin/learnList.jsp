@@ -4,25 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>leanEducation</title>
-<style>
-
-</style>
+	<meta charset="UTF-8">
+	<title>leanEducation</title>
 	<link rel="stylesheet" href="eduadmin/css/learnlist.css">
 </head>
 <body>
-	<div class="title_area">
-		<h3 class="sub_title">
+	<div class="title-wrap">
+		<div class="title">
 			<span>참여신청</span>
-		</h3>
+		</div>
 	</div>
+	
 	<div class="title_area">
 		<h4 class="sub_title">
 			<span>예약중인 교육</span>
 		</h4>
 	</div>
-	
 		<!-- 검색박스 -->
 	<div class="sch_area">
 		<div class="search_box">
@@ -34,20 +31,18 @@
 			</button>
 		</div>
 	</div>
-	
 	<div class="sect1">
 		<div class="brd_area">
 			<div class="brd_title">
 				<ul class="list_type4-career" id="ingList">
 				<c:forEach var="leanvo" items="${leanlist }">
 					<c:if test="${leanvo.edu_detailstatus == 'EDUDT01'}">
-					
 					<li>
 						<div class="event-info">
 						<a href="lean?param=${leanvo.edu_detidx }" class="place_type">
-							<span class="selectspan">${leanvo.edu_detailname }</span> 
+							<span class="selectspan underline">${leanvo.edu_detailname }</span> 
 							<span class="selectspan">${leanvo.edu_period_start } ~ ${leanvo.edu_period_end }</span> 
-							<span class="selectspan">예약중</span>
+							<span class="selectspan red">예약중</span>
 						</a>
 						</div>
 					</li>
@@ -93,11 +88,13 @@
 			</c:when>
 		</c:choose>
 	</ol>
+	<c:if test="${login.mem_id eq 'admin'}">
 	<div class="link-a-btn">
 		<a href="learnUtil?paramUtil=learnInsert" class="a_btn"><span>추가</span></a>
 		<a href="learnUtil?paramUtil=learnUpdate" class="a_btn"><span>수정</span></a>
 		<a href="learnUtil?paramUtil=learnDelete" class="a_btn"><span>삭제</span></a>
 	</div>
+	</c:if>
 </body>
 <script>
 	function goPage(pageNum) {
@@ -107,7 +104,6 @@
 		let searchText = document.querySelector('#searchText').value;
 		location.href = "learnsearch?cPage=" + pageNum + "&searchtext=" + searchText;
 		
-	}
-	
+	}	
 </script>
 </html>

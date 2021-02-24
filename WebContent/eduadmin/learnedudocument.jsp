@@ -12,10 +12,10 @@
 </head>
 <body>
 	<!-- 타이틀  -->
-	<div class="title_area" id="sub_title">
-		<h3 class="sub_title">
+	<div class="title-wrap">
+		<div class="title">
 			<span>교육자료실</span>
-		</h3>
+		</div>
 	</div>
 	
 	<!-- 검색박스 -->
@@ -100,47 +100,49 @@
 				</li>
 			</c:if>
 			</ul>
-		<div>
+		</div>
 		
-		<ol class="paging">
-			<c:choose>
-				<c:when test="${pvo.nowBlock eq 1}">
-					<li class="disable"><i class="fas fa-angle-double-left"></i></li>
-					<li class="disable"><i class="fas fa-angle-left"></i></li>
-				</c:when>
-				<c:when test="${pvo.nowBlock > 1}">
-					<li onclick="goPage('1')"><i class="fas fa-angle-double-left"></i></li>
-					<li onclick="goPage('${pvo.nowPage - 2}')"><i class="fas fa-angle-left"></i></li>
-				</c:when>
-			</c:choose>
-			
-			<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
-				<c:if test="${pageNo == pvo.nowPage }">
-					<li class="now">${pageNo}</li>
-				</c:if>
-				<c:if test="${pageNo ne pvo.nowPage}">
-					<li onclick="goPage('${pageNo}')">${pageNo}</li>
-				</c:if>
-			</c:forEach>	
+		<div class="paging-wrap">
+			<ol class="paging">
+				<c:choose>
+					<c:when test="${pvo.nowBlock eq 1}">
+						<li class="disable"><i class="fas fa-angle-double-left"></i></li>
+						<li class="disable"><i class="fas fa-angle-left"></i></li>
+					</c:when>
+					<c:when test="${pvo.nowBlock > 1}">
+						<li onclick="goPage('1')"><i class="fas fa-angle-double-left"></i></li>
+						<li onclick="goPage('${pvo.nowPage - 2}')"><i class="fas fa-angle-left"></i></li>
+					</c:when>
+				</c:choose>
 				
-			<c:choose>
-				<c:when test="${pvo.nowBlock eq pvo.totalBlock}">
-					<li class="disable"><i class="fas fa-angle-right"></i></li>
-					<li class="disable"><i class="fas fa-angle-double-right"></i></li>
-				</c:when>
-				<c:when test="${pvo.nowBlock < pvo.totalBlock}">
-					<li onclick="goPage('${pvo.nowPage + 2}')"><i class="fas fa-angle-right"></i></li>
-					<li onclick="goPage('${pvo.totalPage}')"><i class="fas fa-angle-double-right"></i></li>
-				</c:when>
-			</c:choose>	
-		</ol>
+				<c:forEach var="pageNo" begin="${pvo.beginPage}" end="${pvo.endPage}">
+					<c:if test="${pageNo == pvo.nowPage }">
+						<li class="now">${pageNo}</li>
+					</c:if>
+					<c:if test="${pageNo ne pvo.nowPage}">
+						<li onclick="goPage('${pageNo}')">${pageNo}</li>
+					</c:if>
+				</c:forEach>	
+					
+				<c:choose>
+					<c:when test="${pvo.nowBlock eq pvo.totalBlock}">
+						<li class="disable"><i class="fas fa-angle-right"></i></li>
+						<li class="disable"><i class="fas fa-angle-double-right"></i></li>
+					</c:when>
+					<c:when test="${pvo.nowBlock < pvo.totalBlock}">
+						<li onclick="goPage('${pvo.nowPage + 2}')"><i class="fas fa-angle-right"></i></li>
+						<li onclick="goPage('${pvo.totalPage}')"><i class="fas fa-angle-double-right"></i></li>
+					</c:when>
+				</c:choose>	
+			</ol>
+		</div>
+		<c:if test="${login.mem_id eq 'admin'}">
 		<div class="link-a-btn">
 			<a class="a_btn" href="adDocInsertApi">추가</a>
 			<a class="a_btn" href="docutil?docparam=update">수정</a>
 			<a class="a_btn" href="docutil?docparam=delete">삭제</a>
 		</div>	
-		</div>
-	</div>
+		</c:if>
 	</form>
 </body>
 <script>

@@ -3,158 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../common/css/style.css"/>
-<link rel="shortcut icon" href="../common/image/favicon.ico"/>
-<link rel="icon" href="../common/image/favicon.ico"/>
-<style>
-* {
-	user-select: none;	/* 사용자가 드래그 못하게 처리*/
-}
-#hhh1 {
-	display: flex;
-	justify-content: center;
-	margin-top: 20px;
-}
-
-#hh1 {
-	margin-top: 1em;
-	font-size: 2.5em;
-	font-weight: 500;
-	color: #222;
-	border-top: 1px solid #606060;
-	padding: 0.35em 0;
-}
-
-.texth {
-	display: flex;
-	justify-content: center;
-	margin-top: 10px;
-	margin-bottom: 20px;
-}
-
-.memtable-wrap {
-	width: 80%;
-	margin-left: auto; margin-right: auto;
-}
-table {
-	border-collapse: collapse;
-	width: 100%;
-	margin: auto;
-	text-align: center;
-	margin: 0.5em;
-	border-top: 2px solid #222;
-	border-bottom: 2px solid #222;
-}
-
-th {
-	width: 20%;
-	background-color: #EBEBEB;
-	padding: 15px 30px 15px 0;
-	text-align: right;
-	font-size: 0.87em;
-}
-td {
-	width: 100%;
-	background-color: WHITE;
-	padding: 15px 0px 15px 50px;
-	text-align: left;
-	font-size: 0.87em;
-}
-
-.must::before {
-	content: "*";
-	color: #E94040;
-}
-
-.redstar {
-	color: #E94040;
-}
-
-.forred {
-	display: inline-block;
-	color: #E94040;
-	font-size: 13px;
-	padding-left: 15px;
-}
-
-input[type=text], input[type=password] {
-	width: 290px;
-	height: 51px;
-	color: #aaa;
-	padding: 12px 20px;
-	margin: 8px 0 8px 30px;
-	font-size: 17px;
-	border:2px solid #ddd;
-	border-radius: 4px;
-	box-sizing: border-box;
-}
-
-#phone, #cellphone {
-	width: 165px;
-	height: 51px;
-}
-
-select {
-	width: 117px; 
-	height: 50px;
-	padding-top: 3px;
-	font-size: 17px;
-	color: #999;
-	border: 2px solid #ddd;
-	font-size: 16px;
-	margin-left:30px;
-}
-
-.joinbtn {
-	width: 290px;
-	height: 51px;
-	border: none;
-	background-color: red;
-	padding: .8em .5em;
-	color: white;
-	border-radius: 5px;
-	font-size: 15px;
-	font-weight: bold;
-	margin: 4px 2px;
-	cursor: pointer;
-}
-.genderradio{
-	margin-left: 130px;
-}
-
-#phone, #cellphone {
-	margin-left: 0;
-}
-
-#newmemBtn {
-	display: block;
-	margin: 50px auto 50px;
-}
-.black {
-	color: black;
-}
-.red {
-	color: red;
-}
-
-/* 중복 체크 메시지 */
-.hidden {
-	visibility: hidden;
-}
-
-.warning {
-	display: inline-block;
-	color: #E94040;
-	font-size: 13px;
-	padding-left: 15px;
-}
-</style>
-
+	<meta charset="UTF-8">
+	<title>회원가입</title>
+	<link rel="stylesheet" href="css/newMember.css">
 <script>
 	//비밀번호 중복체크
 	$(function(){
@@ -235,14 +86,10 @@ select {
 			}, 300);
 		});
 	});
-
-	
 </script>
 
 </head>
 <body>
-	<%-- <jsp:include page="../common/include/header.jspf" /> --%>
-	<hr>
 	<div>
 		<div id="hhh1">
 			<div id="hh1">회원가입</div>
@@ -368,7 +215,7 @@ select {
 						<label for="address" class="blind"></label>
 						<input type="text" name="address" id="address"
 						maxlength="30"
-						pattern="[ㄱ-힣0-9\s]{5,}"
+						pattern="[ㄱ-힣0-9\s-]{5,}"
 						title="주소를 정확히 입력해주세요">
 						<!-- pattern -> 기호 [ '<>{} $?! "]를 제외하고 최소 3 글자 [az] {3,} 
 							다른 모든 문자는 허용 -->
@@ -383,7 +230,6 @@ select {
 					type="submit" onclick="checkValue(event)">회원가입</button>
 		</div>
 	</form>
-	<%-- <jsp:include page="../common/include/footer.jspf" /> --%>
 	<script>
 		let msg = "${param.msg}";
 		if(msg) {
@@ -425,14 +271,6 @@ select {
 				}
 			});
 		}
-
-
 	</script>
 </body>
 </html>
-<style>
-.red-border {
-	border-color: red !important;
-	outline-color: red !important;
-}
-</style>
